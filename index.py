@@ -25,17 +25,27 @@ class TelaInicial:
         # Botão Adm
         self.bt_adm = Button(self.frm, text="Administrador", bd=6, relief=RAISED,
                          font=("Verdana", 12, "bold"), background="#F2522E",activebackground="#F27B35", activeforeground="white",
-                         command=self.troca)
+                         command=self.login_adm)
         self.bt_adm.place(relx=.1, rely=.5, relwidth=.35, relheight=.25)
         # Botão usuário
         self.bt_user = Button(self.frm, text="Usuário", relief=RAISED, bd=6,
-                     font=("Verdana", 12, "bold"), background="#F2522E", activebackground="#F27B35",activeforeground="white")
+                     font=("Verdana", 12, "bold"), background="#F2522E", activebackground="#F27B35",activeforeground="white",
+                     command=self.login_usuario)
         self.bt_user.place(relx=.55, rely=.5, relwidth=.35, relheight=.25)
-        window.mainloop()
 
-    def troca(self):
+
+    def login_adm(self):
+        perfil = 'adm'
         self.frm.place_forget()
         TelaLogin()
+        print(perfil)
+
+    def login_usuario(self):
+        perfil = 'usuario'
+        self.frm.place_forget()
+        TelaLogin()
+        print(perfil)
+
 
 class TelaLogin:
     def __init__(self):
@@ -45,30 +55,33 @@ class TelaLogin:
         self.frm_login.place(relwidth=.5, relheight=.7, relx=.25, rely=.1)
         # Label 'Login'
         self.lb_login = Label(self.frm_login, text="Login", border=4, relief=RAISED,
-                        font=("Verdana", 14, "bold"), background="#F2522E",highlightbackground="#592202", highlightthickness=2)
+                        font=("Verdana", 12, "bold"), background="#F2522E",highlightbackground="#592202", highlightthickness=2)
         self.lb_login.place(relx=.1, rely=.1, relwidth=.3, relheight=.2)
         # Label 'Senha'
         self.lb_senha = Label(self.frm_login, text="Senha", border=4, relief=RAISED,
-                        font=("Verdana", 14, "bold"), background="#F2522E",highlightbackground="#592202", highlightthickness=2)
+                        font=("Verdana", 12, "bold"), background="#F2522E",highlightbackground="#592202", highlightthickness=2)
         self.lb_senha.place(relx=.1, rely=.48, relwidth=.3, relheight=.2)
         # Entry de 'Login'
         self.entry_login = Entry(self.frm_login, font=("Arial", 12),
-                                bg="#592202",  # Cor de fundo
-                                fg="white",  # Cor do texto
-                                borderwidth=6,  # Largura da borda
-                                relief="groove"  # Estilo da borda
-                                )
+                                bg="#592202", fg="white", borderwidth=6,
+                                relief="groove", insertbackground="white",
+                                insertwidth=10)
         self.entry_login.place(relx=.1, rely=.32, relwidth=.6, relheight=.15)
         # Entry de 'Senha'
         self.entry_senha = Entry(self.frm_login, font=18,
-                                bg="#592202",
-                                fg="white",
-                                borderwidth=6,
-                                relief="groove",
-                                show="@"
-                                )
+                                bg="#592202", fg="white", borderwidth=6,
+                                relief="groove", show="@", insertbackground="white",
+                                insertwidth=10)
         self.entry_senha.place(relx=.1, rely=.7, relwidth=.6, relheight=.15)
+        # Botão 'voltar'
+        self.bt_voltar = Button(self.frm_login, text="Voltar", relief=RAISED, bd=6,
+                     font=("Verdana", 10, "bold"), background="#F2522E", activebackground="#F27B35",activeforeground="white",
+                     command=self.voltar_tela_inicial)
+        self.bt_voltar.place(relx=.73, rely=0.01, relwidth=.25, relheight=.15)
 
+    def voltar_tela_inicial(self):
+        self.frm_login.place_forget()
+        TelaInicial()
 
 
 # Variável recebendo o Tk (janela) 

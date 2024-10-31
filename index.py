@@ -4,6 +4,10 @@ def Login_adm():
     frm_inicio.place_forget()
     login_adm.place(relx=.1, rely=.1, relwidth=.8, relheight=.7)
 
+def back_top():
+    login_adm.place_forget()
+    frm_inicio.place(relx=.1, rely=.1, relwidth=.8, relheight=.7)
+
 
 janela = Tk()
 # tela
@@ -23,5 +27,7 @@ Label(login_adm, text="Login").place(relx=.3, rely=.18, relwidth=.12, relheight=
 Entry(login_adm, width=20).place(relx=.3, rely=.3, relwidth=.4, relheight=.1)
 Label(login_adm, text="Senha").place(relx=.3, rely=.5, relwidth=.12, relheight=.1)
 Entry(login_adm, width=20, show="*").place(relx=.3, rely=.62, relwidth=.4, relheight=.1)
+Button(login_adm, text="Entrar").place(relx=.29, rely=.89, relwidth=.2, relheight=.1)
+Button(login_adm, text="Voltar", command=back_top).place(relx=.51, rely=.89, relwidth=.2, relheight=.1)
 
 janela.mainloop()

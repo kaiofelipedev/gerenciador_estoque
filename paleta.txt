@@ -1,0 +1,30 @@
+#F2522E cor da janela
+#D9AD29 cor do frame
+#592202 cor de borda
+#0D0D0D preto
+#F27B35 laranja claro
+
+class Frame1:
+    def __init__(self, window):
+        self.janela = window
+        # Frame 1
+        self.frame1 = Frame(master=self.janela, background="#D9AD29", border=8,
+                highlightcolor="#592202", highlightthickness=8,
+                highlightbackground="#592202", relief=RAISED)
+        self.frame1.place(relwidth=.8, relheight=.7, relx=.1, rely=.1)
+        # Label
+        self.welcome = Label(self.frame1, text="Welcome", border=4, relief=RAISED,
+                        font=("Verdana", 14, "bold"),background="#F2522E",
+                        highlightbackground="#592202",
+                        highlightthickness=2)
+        self.welcome.place(relwidth=.3, relheight=.2, relx=.35)
+        # Botao de Administrador
+        self.bt_adm = Button(self.frame1, text="Administrador", bd=6,
+                             font=("Verdana", 12, "bold"), relief=RAISED,
+                             background="#F2522E", activebackground="#F27B35",activeforeground="white")
+        self.bt_adm.place(relx=.1, rely=.5, relwidth=.35, relheight=.25)
+        # Botão de usuário
+        self.bt_user = Button(self.frame1, text="Usuário",
+                     font=("Verdana", 12, "bold"), relief=RAISED, bd=6, background="#F2522E", activebackground="#F27B35",activeforeground="white")
+        self.bt_user.place(relx=.55, rely=.5, relwidth=.35, relheight=.25)
+        

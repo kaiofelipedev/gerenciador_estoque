@@ -1,6 +1,5 @@
 from tkinter import *
 
-
 class Janela():
     def __init__(self, window):
         janela = window
@@ -9,7 +8,6 @@ class Janela():
         janela.minsize(550, 350)
         janela.config(background="#F2522E", highlightthickness=8,
                   highlightcolor="#592202", border=8, relief=RAISED)
-
 
 class TelaInicial:
     def __init__(self):
@@ -33,7 +31,6 @@ class TelaInicial:
                      command=self.login_usuario)
         self.bt_user.place(relx=.55, rely=.5, relwidth=.35, relheight=.25)
 
-
     def login_adm(self):
         perfil = 'adm'
         self.frm.place_forget()
@@ -45,7 +42,6 @@ class TelaInicial:
         self.frm.place_forget()
         TelaLogin()
         print(perfil)
-
 
 class TelaLogin:
     def __init__(self):
@@ -82,7 +78,6 @@ class TelaLogin:
     def voltar_tela_inicial(self):
         self.frm_login.place_forget()
         TelaInicial()
-
 
 # Variável recebendo o Tk (janela) 
 window = Tk()

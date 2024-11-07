@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import ttk
+import mysql.connector
 
 class Janela():
     def __init__(self, window):
@@ -63,6 +65,7 @@ class TelaLogin:
                                 relief="groove", insertbackground="white",
                                 insertwidth=10)
         self.entry_login.place(relx=.1, rely=.32, relwidth=.6, relheight=.15)
+        self.entry_login.focus()
         # Entry de 'Senha'
         self.entry_senha = Entry(self.frm_login, font=18,
                                 bg="#592202", fg="white", borderwidth=6,
@@ -78,6 +81,9 @@ class TelaLogin:
         self.bt_entrar = Button(self.frm_login, text="Entrar", relief=RAISED, bd=6,
                      font=("Verdana", 10, "bold"), background="#F2522E", activebackground="#F27B35",activeforeground="white")
         self.bt_entrar.place(relx=.73, rely=.83, relwidth=.25, relheight=.15)
+
+    def checarlogin():
+        pass
 
     def voltar_tela_inicial(self):
         self.frm_login.place_forget()
@@ -113,6 +119,21 @@ class TelaAdm:
                         font=("Verdana", 9, "bold"), relief=SUNKEN, fg="white",
                         background="#592202")
         self.bt_grafico.place(relx=.79, rely=.87, relwidth=.2, relheight=.12)
+        ###########   Treeview   ############
+        self.tv = ttk.Treeview(self.frm_adm, columns=("Id", "Produto",
+        "Descrição", "Qtd"))
+        self.tv.column("#0", width=0)
+        self.tv.column("Id", width=1, stretch=True, anchor="center")
+        self.tv.heading("Id", text="ID")
+        self.tv.column("Produto", width=30, stretch=True, anchor="center")
+        self.tv.heading("Produto", text="Produto")
+        self.tv.column("Descrição", width=120, stretch=True, anchor="center")
+        self.tv.heading("Descrição", text="Descrição")
+        self.tv.column("Qtd", width=1, stretch=True, anchor="center")
+        self.tv.heading("Qtd", text="Qtd")
+        self.tv.place(relx=.02, rely=.14, relwidth=.96, relheight=.7)
+        self.tv.insert("", "end", values=(1, "teclado", "teclado desktop", 15))
+
 
     def inicio(self):
         self.frm_adm.place_forget()
@@ -120,6 +141,5 @@ class TelaAdm:
 # Variável recebendo o Tk (janela) 
 window = Tk()
 Janela(window)
-TelaAdm()
-#TelaInicial()
+TelaInicial()
 window.mainloop()# executando o loop para mostrar a janela

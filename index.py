@@ -13,6 +13,8 @@ class Janela():
 
 class TelaInicial:
     def __init__(self):
+        self.perfil_adm = ""
+        self.perfil_usuario = ""
         # Frame
         self.frm = Frame(window, background="#D9AD29", border=8,
                 highlightcolor="#592202", highlightthickness=8,
@@ -34,16 +36,17 @@ class TelaInicial:
         self.bt_user.place(relx=.55, rely=.5, relwidth=.35, relheight=.25)
 
     def login_adm(self):
-        perfil = 'adm'
+        self.perfil_adm = 'adm'
         self.frm.place_forget()
         TelaLogin()
-        print(perfil)
+        print(self.perfil_adm)
 
     def login_usuario(self):
-        perfil = 'usuario'
+        self.perfil_usuario = 'usuario'
         self.frm.place_forget()
         TelaLogin()
-        print(perfil)
+        print(self.perfil_usuario)
+
 
 class TelaLogin:
     def __init__(self):
@@ -79,15 +82,39 @@ class TelaLogin:
         self.bt_voltar.place(relx=.73, rely=0.01, relwidth=.25, relheight=.15)
         # Botão 'Entrar'
         self.bt_entrar = Button(self.frm_login, text="Entrar", relief=RAISED, bd=6,
-                     font=("Verdana", 10, "bold"), background="#F2522E", activebackground="#F27B35",activeforeground="white")
+                     font=("Verdana", 10, "bold"), background="#F2522E", activebackground="#F27B35",activeforeground="white",
+                     command=self.checarlogin)
         self.bt_entrar.place(relx=.73, rely=.83, relwidth=.25, relheight=.15)
+#############################   CONTINUAR DAQUI   #################################
+    def checarlogin(self):
+        self.user = TelaInicial()
+        login = self.entry_login.get()
+        senha = self.entry_senha.get()
+        mydb = mysql.connector.connect(
+            host= "localhost",
+            user= "root",
+            password= "124578",
+            database= "db_gerefacil"
+        )
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT login, senha, perfil FROM usuarios")
+        resultado = mycursor.fetchall()
+        print(resultado)
+        for x in resultado:
+            if login in x[0] and senha in x[1] and self.user.perfil_adm in x[2]:
+                self.ir_tela_adm()
+            else:
+                print("senha incorreta")
 
-    def checarlogin():
-        pass
-
+        mydb.close()
+####################################################################################
     def voltar_tela_inicial(self):
         self.frm_login.place_forget()
         TelaInicial()
+
+    def ir_tela_adm(self):
+        self.frm_login.place_forget()
+        TelaAdm()
 
 class TelaAdm:
     def __init__(self):
@@ -134,10 +161,10 @@ class TelaAdm:
         self.tv.place(relx=.02, rely=.14, relwidth=.96, relheight=.7)
         self.tv.insert("", "end", values=(1, "teclado", "teclado desktop", 15))
 
-
     def inicio(self):
         self.frm_adm.place_forget()
-        TelaInicial()
+
+
 # Variável recebendo o Tk (janela) 
 window = Tk()
 Janela(window)

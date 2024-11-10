@@ -2,6 +2,7 @@ from tkinter import *
 import tela_inicial as ti
 
 
+
 class Janela():
     def __init__(self, window):
         janela = window

@@ -50,3 +50,4 @@ class TelaAdm:
 
     def inicio(self):
         self.frm_adm.place_forget()
+        ti.TelaInicial(self.window)

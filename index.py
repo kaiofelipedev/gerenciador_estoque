@@ -6,8 +6,8 @@ import tela_inicial as ti
 class Janela():
     def __init__(self, window):
         janela = window
-        janela.title("GereFácil App")# title so aceita um argumento!
-        janela.geometry("700x400+300+100")# width, height, x, y
+        janela.title("GereFácil App")
+        janela.geometry("700x400+300+100")
         janela.minsize(550, 350)
         janela.config(background="#F2522E", highlightthickness=8,
                   highlightcolor="#592202", border=8, relief=RAISED)

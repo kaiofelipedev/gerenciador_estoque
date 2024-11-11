@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 import tela_inicial as ti
+import mysql.connector
 
 class TelaUsuario:
     def __init__(self, window):
@@ -44,8 +45,24 @@ class TelaUsuario:
         self.tv.column("Qtd", width=1, stretch=True, anchor="center")
         self.tv.heading("Qtd", text="Qtd")
         self.tv.place(relx=.02, rely=.27, relwidth=.96, relheight=.7)
-        self.tv.insert("", "end", values=(1, "teclado", "teclado desktop", 15))
+        #self.tv.insert("", "end", values=(1, "teclado", "teclado desktop", 15))
+        self.dados_produtos()
 
     def bt_sair(self):
         self.frm_usuario.place_forget()
         ti.TelaInicial(self.window)
+
+    def dados_produtos(self):
+        mydb = mysql.connector.connect(
+            host= "localhost",
+            user= "root",
+            password= "124578",
+            database="db_gerefacil")
+        
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT * FROM produtos")
+        resultado = mycursor.fetchall()
+        for x in resultado:
+            self.tv.insert("", "end", values=(x[0], x[1], x[2], x[3]))
+        
+        mydb.close()

@@ -3,6 +3,7 @@ from tkinter import ttk
 import tela_inicial as ti
 import mysql.connector
 import tela_novo_produto as tnp
+import novo_usuario as nu
 
 class TelaAdm:
     def __init__(self, window):
@@ -29,14 +30,14 @@ class TelaAdm:
 
         self.novo_produto = Button(self.frm_adm,  text="Novo Produto", border=8,
                         font=("Verdana", 9, "bold"), relief=SUNKEN, fg="white",
-                        background="#592202", command=self.cadastrar)
+                        background="#592202", command=self.cadastrar_produto)
         self.novo_produto.place(relx=.01, rely=.87, relwidth=.2, relheight=.12)
 
         # Botão 'Novo Usuário'
 
         self.novo_user = Button(self.frm_adm,  text="Novo Usuário", border=8,
                         font=("Verdana", 9, "bold"), relief=SUNKEN, fg="white",
-                        background="#592202")
+                        background="#592202", command=self.cadastrar_usuario)
         self.novo_user.place(relx=.4, rely=.87, relwidth=.2, relheight=.12)
 
         # Botão 'Gráfico'
@@ -82,43 +83,10 @@ class TelaAdm:
         
         mydb.close()
 
-    def cadastrar(self):
+    def cadastrar_produto(self):
         self.frm_adm.place_forget()
         tnp.NovoProduto(self.window)
 
-#    def inserir_novo_produto(self):
-#        self.frm_adm.place_forget()
-#        # Frame de novo produto
-#        self.frm_produto = Frame(self.window, bg="#592202", highlightthickness=5,
-#                                 highlightbackground="#D9AD29", bd=10, relief=RAISED)
-#        self.frm_produto.place(relx=.2, rely=.1, relwidth=.6, relheight=.8)
-#        # Label de 'Produto'
-#        self.lb_produto = Label(self.frm_produto, text="Produto", fg="#F2522E",
-#                        font=("Verdana", 14, "bold"), background="#592202")
-#        self.lb_produto.grid(column=0, row=0, pady=10)
-#        # Label de 'Descrição'
-#        self.lb_descricao = Label(self.frm_produto, text="Descrição", fg="#F2522E",
-#                        font=("Verdana", 14, "bold"), background="#592202")
-#        self.lb_descricao.grid(column=0, row=1, pady=10)
-#        # Label de 'Quantidade'
-#        self.lb_qtd = Label(self.frm_produto, text="Quantidade", fg="#F2522E",
-#                        font=("Verdana", 14, "bold"), background="#592202")
-#        self.lb_qtd.grid(column=0, row=2, pady=10)
-#        # Entry de 'Produto'
-#        self.entry_produto = Entry(self.frm_produto, font=("Arial", 12, "bold"),
-#                                bg="#D9AD29", fg="#592202", borderwidth=2,
-#                                relief="groove", insertbackground="#592202",
-#                                insertwidth=10)
-#        self.entry_produto.grid(column=1, row=0)
-#        # Entry de 'Descrição'
-#        self.entry_descricao = Entry(self.frm_produto, font=("Arial", 12, "bold"),
-#                                bg="#D9AD29", fg="#592202", borderwidth=2,
-#                                relief="groove", insertbackground="#592202",
-#                                insertwidth=10)
-#        self.entry_descricao.grid(column=1, row=1)
-#        # Entry de 'Quantidade'
-#        self.entry_qtd = Entry(self.frm_produto, font=("Arial", 12, "bold"),
-#                                bg="#D9AD29", fg="#592202", borderwidth=2,
-#                                relief="groove", insertbackground="#592202",
-#                                insertwidth=10, width=5)
-#        self.entry_qtd.grid(column=1, row=2)
+    def cadastrar_usuario(self):
+        self.frm_adm.place_forget()
+        nu.NovoUsuario(self.window)

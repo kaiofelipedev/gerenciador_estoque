@@ -27,6 +27,7 @@ class NovoProduto:
                                 relief="groove", insertbackground="#592202",
                                 insertwidth=10)
         self.entry_produto.grid(column=1, row=0)
+        self.entry_produto.focus()
         # Entry de 'Descrição'
         self.entry_descricao = Entry(self.frm_produto, font=("Arial", 12, "bold"),
                                 bg="#D9AD29", fg="#592202", borderwidth=2,

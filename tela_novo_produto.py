@@ -1,5 +1,6 @@
 from tkinter import *
 import tela_adm as ta
+import mysql.connector
 
 class NovoProduto:
     def __init__(self, window):
@@ -38,4 +39,38 @@ class NovoProduto:
                                 relief="groove", insertbackground="#592202",
                                 insertwidth=10, width=5)
         self.entry_qtd.grid(column=1, row=2)
+        # Botão 'Cadastrar'
+        self.bt_cadastrar = Button(self.frm_produto, text="Cadastrar", font=("Verdana", 12, "bold"),
+                                   background="#D9AD29", foreground="#592202", border=6,
+                                   relief=RAISED, activebackground="#D9AD29", activeforeground="green",
+                                   command=self.cadastrar)
+        self.bt_cadastrar.place(relx=.2, rely=.7, relwidth=.3, relheight=.2)
+        # Botão 'Voltar'
+        self.bt_voltar = Button(self.frm_produto, text="Voltar", bd=6, relief=RAISED,
+                         font=("Verdana", 12, "bold"), background="#F2522E",activebackground="#F27B35", activeforeground="white", command=self.tela_adm)
+        self.bt_voltar.place(relx=.8, rely=.9, relwidth=.2, relheight=.1)
 
+    def tela_adm(self):
+        self.frm_produto.place_forget()
+        ta.TelaAdm(self.window)
+
+    def cadastrar(self):
+        produto = self.entry_produto.get()
+        descricao = self.entry_descricao.get()
+        qtd = self.entry_qtd.get()
+        mydb = mysql.connector.connect(
+            host= "localhost",
+            user= "root",
+            password= "124578",
+            database="db_gerefacil")
+        
+        mycursor = mydb.cursor()
+        sql = ("INSERT INTO produtos (nome_produto, descricao, qtd) VALUES (%s, %s, %s)")
+        val = (produto, descricao, qtd)
+        mycursor.execute(sql, val)
+        mydb.commit()
+        mydb.close()
+        self.entry_produto.delete(0, END)
+        self.entry_descricao.delete(0, END)
+        self.entry_qtd.delete(0, END)
+        self.entry_produto.focus()

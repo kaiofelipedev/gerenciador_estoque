@@ -12,44 +12,44 @@ class NovoUsuario:
         # Label de 'Nome'
         self.lb_nome = Label(self.frm_new_user, text="Nome", fg="#F2522E",
                         font=("Verdana", 14, "bold"), background="#592202")
-        self.lb_nome.grid(column=0, row=0, padx=10, sticky="nsew")
-        # Label de 'Login'
-        self.lb_login = Label(self.frm_new_user, text="Login", fg="#F2522E",
-                        font=("Verdana", 14, "bold"), background="#592202")
-        self.lb_login.grid(column=0, row=2, padx=10, sticky="nsew")
-        # Label de 'Senha'
-        self.lb_senha = Label(self.frm_new_user, text="Senha", fg="#F2522E",
-                        font=("Verdana", 14, "bold"), background="#592202")
-        self.lb_senha.grid(column=1, row=2, padx=10, sticky="nsew")
+        self.lb_nome.place(relx=.15, relwidth=.2, relheight=.1)
         # Label de 'Perfil'
         self.lb_perfil = Label(self.frm_new_user, text="Perfil", fg="#F2522E",
                         font=("Verdana", 14, "bold"), background="#592202")
-        self.lb_perfil.grid(column=1, row=0, padx=10, sticky="nsew")
+        self.lb_perfil.place(relx=.65, relwidth=.2, relheight=.1)
+        # Label de 'Login'
+        self.lb_login = Label(self.frm_new_user, text="Login", fg="#F2522E",
+                        font=("Verdana", 14, "bold"), background="#592202")
+        self.lb_login.place(relx=.15, rely=.3, relwidth=.2, relheight=.1)
+        # Label de 'Senha'
+        self.lb_senha = Label(self.frm_new_user, text="Senha", fg="#F2522E",
+                        font=("Verdana", 14, "bold"), background="#592202")
+        self.lb_senha.place(relx=.65, rely=.3, relwidth=.2, relheight=.1)
         # Entry de 'Nome'
         self.entry_nome = Entry(self.frm_new_user, font=("Arial", 12, "bold"),
                                 bg="#D9AD29", fg="#592202", borderwidth=2,
                                 relief="groove", insertbackground="#592202",
                                 width=15, insertwidth=10)
-        self.entry_nome.grid(column=0, row=1, pady=10, sticky="nsew")
+        self.entry_nome.place(relx=.05, rely=.15, relwidth=.4, relheight=.1)
         self.entry_nome.focus()
-        # Entry de 'Login'
-        self.entry_login = Entry(self.frm_new_user, font=("Arial", 12, "bold"),
-                                bg="#D9AD29", fg="#592202", borderwidth=2,
-                                relief="groove", insertbackground="#592202",
-                                width=15, insertwidth=10)
-        self.entry_login.grid(column=0, row=3, padx=10, sticky="nsew")
-        # Entry de 'Senha'
-        self.entry_senha = Entry(self.frm_new_user, font=("Arial", 12, "bold"),
-                                bg="#D9AD29", fg="#592202", borderwidth=2,
-                                relief="groove", insertbackground="#592202",
-                                width=15, insertwidth=10, show="@")
-        self.entry_senha.grid(column=1, row=3, padx=10, sticky="nsew")
         # Entry de 'Perfil'
         self.entry_perfil = Entry(self.frm_new_user, font=("Arial", 12, "bold"),
                                 bg="#D9AD29", fg="#592202", borderwidth=2,
                                 relief="groove", insertbackground="#592202",
                                 width=10, insertwidth=10)
-        self.entry_perfil.grid(column=1, row=1, pady=10)
+        self.entry_perfil.place(relx=.55, rely=.15, relwidth=.4, relheight=.1)
+        # Entry de 'Login'
+        self.entry_login = Entry(self.frm_new_user, font=("Arial", 12, "bold"),
+                                bg="#D9AD29", fg="#592202", borderwidth=2,
+                                relief="groove", insertbackground="#592202",
+                                width=15, insertwidth=10)
+        self.entry_login.place(relx=.05, rely=.45, relwidth=.4, relheight=.1)
+        # Entry de 'Senha'
+        self.entry_senha = Entry(self.frm_new_user, font=("Arial", 12, "bold"),
+                                bg="#D9AD29", fg="#592202", borderwidth=2,
+                                relief="groove", insertbackground="#592202",
+                                width=15, insertwidth=10, show="@")
+        self.entry_senha.place(relx=.55, rely=.45, relwidth=.4, relheight=.1)
         # Botão 'Cadastrar'
         self.bt_cadastrar = Button(self.frm_new_user, text="Cadastrar", font=("Verdana", 12, "bold"),
                                    background="#D9AD29", foreground="#592202", border=6,

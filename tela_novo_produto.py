@@ -12,34 +12,34 @@ class NovoProduto:
         # Label de 'Produto'
         self.lb_produto = Label(self.frm_produto, text="Produto", fg="#F2522E",
                         font=("Verdana", 14, "bold"), background="#592202")
-        self.lb_produto.grid(column=0, row=0, pady=10)
+        self.lb_produto.place(rely=.01, relx=.01, relwidth=.3, relheight=.1)
         # Label de 'Descrição'
         self.lb_descricao = Label(self.frm_produto, text="Descrição", fg="#F2522E",
                         font=("Verdana", 14, "bold"), background="#592202")
-        self.lb_descricao.grid(column=0, row=1, pady=10)
+        self.lb_descricao.place(rely=.15, relx=.01, relwidth=.3, relheight=.1)
         # Label de 'Quantidade'
         self.lb_qtd = Label(self.frm_produto, text="Quantidade", fg="#F2522E",
                         font=("Verdana", 14, "bold"), background="#592202")
-        self.lb_qtd.grid(column=0, row=2, pady=10)
+        self.lb_qtd.place(rely=.3, relx=.01, relwidth=.35, relheight=.1)
         # Entry de 'Produto'
         self.entry_produto = Entry(self.frm_produto, font=("Arial", 12, "bold"),
                                 bg="#D9AD29", fg="#592202", borderwidth=2,
                                 relief="groove", insertbackground="#592202",
                                 insertwidth=10)
-        self.entry_produto.grid(column=1, row=0)
+        self.entry_produto.place(rely=.03, relx=.35, relwidth=.5, relheight=.08)
         self.entry_produto.focus()
         # Entry de 'Descrição'
         self.entry_descricao = Entry(self.frm_produto, font=("Arial", 12, "bold"),
                                 bg="#D9AD29", fg="#592202", borderwidth=2,
                                 relief="groove", insertbackground="#592202",
                                 insertwidth=10)
-        self.entry_descricao.grid(column=1, row=1)
+        self.entry_descricao.place(rely=.17, relx=.35, relwidth=.5, relheight=.08)
         # Entry de 'Quantidade'
         self.entry_qtd = Entry(self.frm_produto, font=("Arial", 12, "bold"),
                                 bg="#D9AD29", fg="#592202", borderwidth=2,
                                 relief="groove", insertbackground="#592202",
                                 insertwidth=10, width=5)
-        self.entry_qtd.grid(column=1, row=2)
+        self.entry_qtd.place(rely=.31, relx=.4, relwidth=.15, relheight=.08)
         # Botão 'Cadastrar'
         self.bt_cadastrar = Button(self.frm_produto, text="Cadastrar", font=("Verdana", 12, "bold"),
                                    background="#D9AD29", foreground="#592202", border=6,

@@ -4,6 +4,7 @@ import tela_inicial as ti
 import mysql.connector
 import tela_novo_produto as tnp
 import novo_usuario as nu
+import grafico as gf
 
 class TelaAdm:
     def __init__(self, window):
@@ -44,7 +45,7 @@ class TelaAdm:
 
         self.bt_grafico = Button(self.frm_adm,  text="Gráfico", border=8,
                         font=("Verdana", 9, "bold"), relief=SUNKEN, fg="white",
-                        background="#592202")
+                        background="#592202", command=self.mostrar_grafico)
         self.bt_grafico.place(relx=.79, rely=.87, relwidth=.2, relheight=.12)
 
         ###########   Treeview   ############
@@ -90,3 +91,6 @@ class TelaAdm:
     def cadastrar_usuario(self):
         self.frm_adm.place_forget()
         nu.NovoUsuario(self.window)
+
+    def mostrar_grafico(self):
+        gf.Grafico()

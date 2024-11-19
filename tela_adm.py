@@ -52,7 +52,7 @@ class TelaAdm:
 
         self.tv = ttk.Treeview(self.frm_adm, columns=("Id", "Produto",
         "Descrição", "Qtd"))
-        self.tv.column("#0", width=0)
+        self.tv.column("#0", width=0, stretch=NO)
         self.tv.column("Id", width=1, stretch=True, anchor="center")
         self.tv.heading("Id", text="ID")
         self.tv.column("Produto", width=30, stretch=True, anchor="center")

@@ -1,5 +1,0 @@
-#F2522E cor da janela
-#D9AD29 cor do frame
-#592202 cor de borda
-#0D0D0D preto
-#F27B35 laranja claro
